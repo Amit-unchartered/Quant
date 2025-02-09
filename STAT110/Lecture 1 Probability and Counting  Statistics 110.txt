@@ -1,0 +1,29 @@
+Sample Space - set of all possible outcomes of an experiment. An event is a subset of the sample space.
+
+Naïve definition of probability:
+P(A) = number of favourable outputs to A/ number of possible outcomes.
+This definition assumes all outcomes are equally likely, and have finite sample space.
+
+Counting:
+Multiplication Rule: if we have a experiment with n possible outcomes, and for each outcome of 1st experiment there are n2 possible outcomes for the second experiment....for each there are n outcomes for rth experiment then 
+n1*n2*n2*…..nr overall possible outcomes.
+Ice Cream Example:
+2 different types of Cone, 3 flavours of ice creams.
+ans: 2.3 or 3.2
+
+Example: find the prob. of full house in poker, with a 5 card hand.(Assuming that card are shuffled, so all sets of 5 cards are equally likely.)
+
+Binomial coeff: nck = n!/((n-k)!*(k!)), 0 if k>n 
+subsets of size k from group of n people.
+
+n*(n-1)*(n-2)*(n-3)……(n-k+1)/k!   = n!/((n-k)!*(k!)) {order doesnot matter}
+
+full house - three card of one rank, and 2 cards of another rank.
+ans: 13*(4c3)*12*(4c2)/(52c3) = 13*4*12*6/((52*51*50)/(6))
+
+Sampling table: 
+we are choosing k objects out of n, we want to know its possibilities.
+                                order matters    order doesn't matters
+sampling with replacement        n^k                    (n+k-1)c(k)
+
+sampling without replacement     n*(n-1)*….*(n-k+1)         (nck)
