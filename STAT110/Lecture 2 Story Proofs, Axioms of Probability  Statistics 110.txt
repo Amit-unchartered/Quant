@@ -40,5 +40,7 @@ if we need to select total k objects from box m and n then, we can select j part
 #NON NAIVE DEFINITION of PROBABILITY
 A probability sample consists of S and P, where S is a sample space, and P is a function which takes an event A which is a subset of S as input, returns P(A) belonging to [0,1] as output, such that
 
+P is a function defined on events defined on events and taking values between 0 and 1.
+
 RULE 1: P(empty set)=0, P(S or Universe)=1
 RULE 2: P(Union(from n=1 to infinity) An) = summation(from n=1 to infinity) P(An) if A1,A2,A3....An are disjoint i.e. they don't overlap each other.
