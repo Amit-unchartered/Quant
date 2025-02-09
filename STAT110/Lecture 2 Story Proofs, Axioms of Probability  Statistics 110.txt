@@ -1,0 +1,44 @@
+If we have n people, then label them 1,2,3,...n.
+
+example 1: split 10 players in team of 4 players and 6 players
+ans: 10c4 or 10c6
+
+example 2: split 10 players in team of 5 players each
+ans: 10c5/2 (because selecting first team automatically makes 2nd team, similarly selecting second team automatically makes 1st team).
+
+## ORDER doesnot matters, REPLACEMENT is allowed.
+pick k times from set of n objects, where order doesn't matters, with replacement. i.e. (n+k-1)c(k).
+Extreme Cases: 
+case 1:
+k=0 ,(n-1)c0 = 1
+case 2:
+k=1, nc1 = n
+case 3:
+n=2 :(simplest non trivial example), (k+1)c(k) = (k+1)c(1) = k+1
+Explaination for n=2 case:
+Take 2 boxes and choose 3 objects to keep in box1 and choose4 objects to keep in box2. so number 
+
+It is equivalent to: how many ways are there to put k indistinguishable particles into n distinguishable boxes?
+  . . . |  | . . | .
+
+there are n boxes, 1st box contains 3 particles, 2nd box is empty, 3rd box contains 2 particles, 4th box contains 1 particle.
+
+k .'s re there, we have made (n-1) spaces between them. So, we pick k spaces out of (n+k-1) spaces available is (n+k-1)c(k) or (n+k-1)c(n-1).
+
+##Story Proof: proof by interpretation, not by calculus.
+
+Example 1: nck = nc(n-k)
+
+Example 2: n((n-1)c(k-1)) = k(nck).
+interpretation: pick k people out of n, with 1 designated as President
+ans: n*(n-1)c(k-1) = k*(nck).{count same thing in 2 ways}.
+
+Example 3: (m+n)ck = Summation( from j=0 to k) (mcj)(nc(k-j))     {Vandermonde's Identity.}
+interpretation: suppose there are two boxes m and n, m contains 3 particles, n contains 5 particles, then
+if we need to select total k objects from box m and n then, we can select j particles from box1 and (k-j) particles from box2.
+
+#NON NAIVE DEFINITION of PROBABILITY
+A probability sample consists of S and P, where S is a sample space, and P is a function which takes an event A which is a subset of S as input, returns P(A) belonging to [0,1] as output, such that
+
+RULE 1: P(empty set)=0, P(S or Universe)=1
+RULE 2: P(Union(from n=1 to infinity) An) = summation(from n=1 to infinity) P(An) if A1,A2,A3....An are disjoint i.e. they don't overlap each other.
