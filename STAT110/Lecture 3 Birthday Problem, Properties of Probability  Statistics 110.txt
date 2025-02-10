@@ -1,0 +1,42 @@
+#BIRTHDAY PROBLEM:
+k people, find probability that 2 have same birthday. Excluding Feb 29,assume other 365 days are equally likely. Assume independence of birthdays.(birthday of one person does not affect birthday of other person)
+
+if k>365, prob is 1
+Suppose there are 365 boxes, if we have more than 365 people then at least one box will have more than 1 person. {This is pigeonhole principle}. This kind of problem is extremely important in computer science, for storing information in different DS, data collision can occur if space is less.
+
+let k<=365 P(no match)
+
+working with probability: P(no match) = 365*364*363*362*..,(365-k+1)/365^k
+P(match) = { 50.73%, if k=23}
+           { 97%, if k=50 }
+           { 99.999% , if k=100}
+
+#NOTE
+There can also be a problem to check if 2 people have birthday on same date or one day away. So, for a 50% chance to make it happen reduces to 14 people.
+
+#PROPERTIES OF PROBABILITY:
+
+1. P(A^c) = 1 - P(A)
+proof: 1 = P(S) = P(A U A^c) = P(A) + P(A^c)
+
+2. If A is a subset of B, then P(A)<=P(B)
+B = A ∪ ( B ∩ Ac), both are disjoint, So
+P(B) = P(A) + P(B ∩ Ac) >= P(A)
+
+3.Probability of union
+P(A U B) = P(A) + P(B) - P(A ∩ B)
+proof: P(A U B) = P(A U (B ∩ Ac)) = P(A) + P(B ∩ Ac)  {since A and (B ∩ Ac) both are disjoint}
+?? we wish if P(B ∩ Ac) = P(B) - P(A ∩ B), for this to happen,
+P(A ∩ B) + P(Ac ∩ B) = P(B) ==> this is true since both (A ∩ B) and (Ac ∩ B) both are disjoint, This rule is a simple case of inclusion and  exclusion.
+
+P(A U B U C) = P(A) + P(B) + P(C) - P(A ∩ B) - P(A ∩ C) - P(B ∩ C) + P(A ∩ B ∩ C) --> This is also inclusion exclusion.
+
+General Formula:
+P(A1 U A2 U A3 U A4 U ...... U An)
+n                           
+∑ P(Aj) - summation(from i<j to n)P(Ai U Aj) + summation(from i<j<k)P(Ai∩Aj∩Ak) ... ........(-1)^(n+1)P(A1∩A2∩A3........An).
+j=1
+
+
+##DE MONTMORT's PROBLEM (1713), matching problem
+n cards labelled 1,2,3...n. Let Aj be the event that "jth card matches"
