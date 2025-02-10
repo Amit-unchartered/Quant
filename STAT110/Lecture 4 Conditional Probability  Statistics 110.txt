@@ -1,0 +1,86 @@
+continued with ##DE MONTMORT's PROBLEM (1713), matching problem
+1. n cards labelled 1,2,3...n. Let Aj be the event that atleast one of the jth card matches.
+2. we have shuffled them, so any card matching will be equally likely.
+3. Now we flip the card and check if card number is equal to the index it is at.
+
+let Ai be the event that ith card matches:
+Goal: P(A1 U A2 U A3 U A4...... U An) = P
+
+P = P(A1) + P(A2) + P(A3)...+ P(An) - P(A1 ∩ A2) - P(A2 ∩ A3) … +(-1)^(n+1)P(A1∩A2∩A3...…An)
+
+by symmetry, there is no reason for any particular card more likely to match.
+
+So, P(A1) = P(A2) = P(A3) = …. = P(An)
+and P(A1∩A2) = P(A2∩A3) = P(A3∩A4) and so on.
+similar for any number of intersections.
+
+so, P = n*P(A1) - nc2*P(A1∩A2) + …….+(-1)^(n+1)P(A1∩A2∩A3......∩An)
+
+P = n*(n-1)!/n! - n!/(n-2)!*2! * (n-2)!/n! … .. ((-1)^(n+1))*0!/n!
+
+P = 1 - 1/2! + 1/3! - 1/4! + 1/5! - … . .  + (-1)^(n+1)/n! = 1 - 1/e
+
+#INDEPENDENT EVENTS:
+Events A and B are independent if P(A∩B) = P(A)*P(B)
+NOTE: it is completely different from disjointness.
+
+Independent: if A occurs it doesn't tells whatsoever that B has occurred or not.
+Disjoint: if A has occurred then B can't occur.
+
+for three events:
+A, B, C are independent if P(A,B) = P(A)*P(B) , P(B,C) = P(B)*P(C), P(A,C) = P(A)*P(C), P(A,B,C) = P(A)*P(B)*P(C).
+So, there must be pair wise independence and then all of them.
+
+Similarly for n events A1, A2, A3, …. An
+2 pair independent, 3 pair independent, ….. n pair independent.
+
+So, "independence means multiplication".
+
+##################################################################################
+#NEWTON PEPYS PROBLEM(1693):
+we have a fair dice, which one is more likely
+a) at least one 6 with 6 dice
+b) at least two 6 with 12 dice
+c) at least three 6 with 18 dice
+
+solution: P(A) = 1 - (5/6)^6 = 0.665
+P(B) = 1 - P(No 6s) - P(exactly one 6) = 1 - (5/6)^12 - 12*(1/6)*(5/6)^11 = 0.619
+P(C) = 1 - summation(from k=0 to 2)18ck*((1/6)^k)*((5/6)^(18-k)) = 0.597
+
+So, A is most likely
+###################################################################################
+
+
+#CONDITIONAL PROBABILITY:
+How should you update prob/beliefs/uncertainty based in new evidence?
+
+"Conditioning is the soul of statistics"
+ Definition: P(A|B) = P(A ∩ B)/ P(B), if P(B) > 0.
+
+#Intuition 1: Pebble World. There is a sample space S such that
+0 0 0                                     1 1 0
+0 0 0  now the event B has occurred i.e.  1 1 0
+0 0 0                                     0 0 0
+
+A event is  1 0
+            0 0
+
+9 pebbles, total mass 1
+P(A|B): {get rid of pebbles that are not in B(or are in Bc)}
+we divide it by P(B) to renormalize it to make mass 1(it is just a fancy term that says multiply by a constant so that mass remains 1.)
+
+#Intuition 2: Frequentist World: repeat same experiment many times over and over again.(Just assume we can)./
+Random Binary Data:
+1001001110 --> B occurred
+0011100010
+1111111111 --> B occurred
+{circle those repetitions where B occurred, among those, what fraction of time did A also occurred.}
+
+
+#THEOREMS:
+
+Theorem 1. P(A ∩ B) = P(B)*P(A|B) = P(A)*P(B|A) --> since there are 2 events A and B, so intersection can be represented in 2! ways.
+
+Theorem 2. P(A1,A2.....An) = P(A1)*P(A2|A1)*P(A3|A1,A2)*…..P(An|A1,A2,....An-1) --> since there are n events, so intersection can be represented in n! ways.
+
+Theorem 3: P(A|B) = P(A)*P(B|A)/P(B) --> This is Baye's Rule.
