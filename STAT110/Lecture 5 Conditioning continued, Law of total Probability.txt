@@ -1,0 +1,69 @@
+Topic is Thinking:
+Thinking conditionally is a condition for thinking.
+
+How to solve a problem:
+1) try simple and extreme cases
+2) try to break the problem into simpler pieces.
+let we have a sample space S with a event B occurred inside it. We need to calculate P(B).
+So, we will divide the sample space S into n parts which are disjoint, so that there union is equal to S.
+Let the parts in which we have divided be A1, A2, A3....An
+
+So, P(B) = P(B∩A1) + P(B∩A2) …… P(B∩An)
+    P(B) = P(B|A1)*P(A1) + P(B|A2)*P(A2) …… P(B|An)*P(An) --> law of total probability.
+This is useful or not, it depends on how you have chosen the partition.
+
+Two Reasons why conditional probability is important:
+1) It says if we get some evidence then how do we update our probabilities based the evidence.
+2) even if we want unconditional probability then we need to break the problem into smaller pieces of conditional probability.
+
+Example: get random 2 cards hand from standard deck.
+Find P(both Aces| have ace), P(both Aces | have ace of spades)
+P(have ace) = Probability that atleast one of them is a ace.
+sol:a) P(both aces, have ace)/P(have ace) = P(both aces)/P(have ace) = (4c2/52c2)/(1 - 48c2/52c2) = 1/33
+b) P(both Aces |exactly one have ace of spades) = 3/51 = 1/17
+The P(both Aces |atleast one have ace of spades) = 3/51 = 1/17 because there is only one ace of spades.
+
+Example: Patient gets tested for a disease that affects 1% of population, tests positive that means patient has disease.(Assumptions: suppose test is 95% accurate, suppose that this means)
+D: patient has disease
+T: patient tests positive
+
+P(T|D) = 0.95 = P(Tc/Dc)
+P(D) = 0.01
+but the person is interested in P(D|T) i.e. for a given test, probability of getting disease.
+so, P(D|T) = (P(T|D)*P(D))/P(T) = (P(T|D)*P(D))/(P(T/D)*P(D) + P(T/Dc)*P(Dc)) = 0.16 i.e. 16% only
+so even, with the test having 95% accuracy only 16% of people actually has disease even when they are tested positive.
+
+Statements that we can interpret from this
+1) we may consider a different kind of test, but both tests should be independent of each other otherwise things that would have gone wrong might similarly go wrong  in the other testcase.
+2)Why people's intuition is wrong about this test?
+This is because we focus on the 95% accuracy of the test i.e. it is rare for the test to go wrong BUT we don't focus on the part that it affects only 1% of the population i.e. getting the disease is also rare. So, there is a competition between how rare is the disease and how rarely the test goes wrong and psychologically most people see the accuracy of test not that getting disease is rare
+3)This can also be seen by frequentist world. we will repeat the experiment for 1000 patients, out of that 10 people will be tested positive who actually have disease, and 50 people will be tested positive who actually don't have a disease. So, ratio is 1:5 approx that is close to 1:6.
+
+NOTE: The Bayes Rule has a coherency property, that whatever evidence we get, one or all at once, or some combination, at last the total probability will be probability of whatever we are interested in given the evidence.
+
+##COMMON MISTAKES FOR CONDITIONAL PROBABILITY
+Biohazards:
+1) P(A|B), P(B|A) (it is also called "prosecutor's fallacy")
+example: Sally Clarke, SIDS(Sudden infant death syndrome)
+This was the probability said in courtroom: (1/8500)*(1/8500) = (1/(73*10^6)) --> this is P(evidence/innocence), 1/8500 was given as probability of a baby dying, and for 2 children they have multiplied the probabilities, it means that they were assuming deaths of the two babies as independent events, which can't be true.
+If we would have calculated P(innocence/evidence) then it is very close to 1, since not every mothers kill their babies. Then the women would have not been prosecuted.
+
+2) confusing between prior and posterior, prior is before evidence i.e. P(A), posterior is probability after evidence i.e. P(A|B). P(A|A)=1, as we are saying P(A) given that A has already occurred.
+
+3) confusing independence with conditional independence.
+conditional independence: Events A, B are conditionally independent given C then
+P(A∩B|C) = P(A|C) + P(B|C)
+So, there are two ques:
+
+a) does conditionally independent imply they are independent?
+ans: NO
+Ex: Chess opponent of unknown strength.
+May be that the game outcomes are conditionally independent given the strength of your opponent but not independent unconditionally. The games can't be individually independent as suppose you won the 1st 5 games, then you will definitely be confident that you are better player than the opponent, so although the games seem independent they are not, they are conditionally independent given how strong our opponent is.
+
+b) does independence imply conditional independence given C?
+ans: No
+Ex: A: fire alarm goes off
+caused by: F: Fire
+           C: someone is making popcorn.
+Suppose F and C are completely independent BUT P(F|A,Cc) = 1.
+So, initially both F and C are independent but as soon as alarm goes off, then they become dependent, so they can't be conditionally dependent.
